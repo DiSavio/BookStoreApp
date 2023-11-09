@@ -61,16 +61,16 @@
 	<pager asp-action="BookList" asp-controller="BookController" asp-route-page="@Model.PageResult.PageNumber" asp-route-pageSize="@Model.PageResult.PageSize" asp-route-totalItemCount="@Model.PageResult.TotalCount" id="bookPager">
 		<ul class="pagination">
 			<li class="page-item @((Model.PageResult.PageNumber == 1) ? "disabled" : "")">
-				<a class="page-link" href="@(Url.Page("/BookList", new { page = 1, pageSize = Model.PageResult.PageSize }))">1</a>
+				<a class="page-link" href="@(Url.Page("/Index", new { page = 1, pageSize = Model.PageResult.PageSize }))">1</a>
 			</li>
 			@for (int i = 2; i <= Model.PageResult.TotalPages; i++)
 			{
 					<li class="page-item @(Model.PageResult.PageNumber == i ? "active" : "")">
-						<a class="page-link" href="@(Url.Action("BookList", "Book", new { page = i, pageSize = Model.PageResult.PageSize }))">@i</a>
+						<a class="page-link" href="@(Url.Action("Index", "Book", new { page = i, pageSize = Model.PageResult.PageSize }))">@i</a>
 					</li>
 			}
 			<li class="page-item @((Model.PageResult.PageNumber == Model.PageResult.TotalPages) ? "disabled" : "")">
-				<a class="page-link" href="@(Url.Action("BookList", "Book", new { page = Model.PageResult.PageNumber + 1, pageSize = Model.PageResult.PageSize }))">Next</a>
+				<a class="page-link" href="@(Url.Action("Index", "Book", new { page = Model.PageResult.PageNumber + 1, pageSize = Model.PageResult.PageSize }))">Next</a>
 			</li>
 		</ul>
 	</pager>
