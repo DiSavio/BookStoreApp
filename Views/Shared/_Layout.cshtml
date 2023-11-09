@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] BookStore </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookStoreApp.styles.css" asp-append-version="true" />
+</head>
+<style>
+    .textInNav
+   {
+        font-size: 14px;
+        color: white;
+        text-decoration: none;
+    }
+
+      
+</style>
+<body>
+    <nav style="margin: 0px 5%" class="d-flex flex-row justify-content-between bg-dark px-4 py-2">
+        <div class="d-flex gap-3">
+            <img height="25px" width="25px" src="~/home2.png" style="color:white" />
+            <a class="textInNav" asp-controller="Home" asp-action="Index">Home</a>
+            <img height="25px" width="25px" src="~/book.png" style="color:white" />
+            <a class="textInNav" asp-controller="Book" asp-action="Index">Books</a>
+            <img height="25px" width="25px" src="~/feather.png" style="color:white" />
+            <a class="textInNav">Authors</a>
+        </div>
+
+        <div class="d-flex gap-3">
+            <img height="25px" width="25px" src="~/cart.png" style="color:white" />
+            <a class="textInNav">Cart</a>
+            <img height="30px" width="35px" src="~/register.png" style="color:white" />
+            <a class="textInNav">Register</a>
+            <img height="25px" width="25px" src="~/setting.png" style="color:white" />
+            <a class="textInNav">Admin</a>
+        </div>
+    </nav>
+
+    <div style="margin: 0px 5%;" class="mb-4">
+        <img style="width: 100%;" src="~/Screenshot 2023-10-12 230701.png" />
+    </div>
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
