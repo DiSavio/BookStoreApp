@@ -22,30 +22,34 @@
     </form>
 </div>
 
-<!-- Table for Displaying Authors -->
 <table class="table table-bordered table-striped">
     <thead>
         <tr class="text-white bg-dark">
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Actions</th> <!-- Add a column for actions like Edit -->
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (Author author in Model.PageResult.Items)
         {
             <tr>
-                <!-- Add a link to the Edit action on the author's first name -->
-                <td><a asp-action="Edit" asp-route-id="@author.AuthorId">@author.FirstName</a></td>
+                <td>@author.FirstName</td>
                 <td>@author.LastName</td>
                 <td>
-                    <!-- Optionally, add a link for Edit here as well -->
-                    <a asp-action="Edit" asp-route-id="@author.AuthorId" class="btn btn-primary">Edit</a>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <a href="@Url.Action("Delete", "Author", new { id = author.AuthorId })" onclick="return confirm('Are you sure you want to delete this author?');">
+                            <img src="~/Red_X.png" alt="Delete" title="Delete Author" style="cursor:pointer; width:20px; height:20px;">
+                        </a>
+                    </div>
                 </td>
             </tr>
         }
     </tbody>
+
 </table>
+
+
 
 <!-- Pagination Links -->
 <div class="text-center">

@@ -94,6 +94,35 @@ namespace BookStoreApp.Controllers
             }
             return View(author);
         }
+        public IActionResult Delete(int id)
+        {
+            var author = context.Authors.Find(id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+            context.Authors.Remove(author);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Restore(int id)
+        {
+            var author = await context.Authors.FindAsync(id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            author.isDeleted = false; // Restore the author
+            await context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
         private bool AuthorExists(int id)
         {
