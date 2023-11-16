@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreApp.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20231102234926_Initial")]
-    partial class Initial
+    [Migration("20231116203444_AddIsDeletedColumnToAuthor")]
+    partial class AddIsDeletedColumnToAuthor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,9 @@ namespace BookStoreApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
@@ -48,139 +51,162 @@ namespace BookStoreApp.Migrations
                         {
                             AuthorId = 1,
                             FirstName = "Stephen",
-                            LastName = "King"
+                            LastName = "King",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 2,
                             FirstName = "Agatha",
-                            LastName = "Christie"
+                            LastName = "Christie",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 3,
                             FirstName = "Danielle",
-                            LastName = "Steel"
+                            LastName = "Steel",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 11,
                             FirstName = "David",
-                            LastName = "McCullough"
+                            LastName = "McCullough",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 12,
                             FirstName = "George",
-                            LastName = "Orwell"
+                            LastName = "Orwell",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 13,
                             FirstName = "J.K.",
-                            LastName = "Rowling"
+                            LastName = "Rowling",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 14,
                             FirstName = "J.R.R.",
-                            LastName = "Tolkien"
+                            LastName = "Tolkien",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 15,
                             FirstName = "Augusten",
-                            LastName = "Burroughs"
+                            LastName = "Burroughs",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 16,
                             FirstName = "Harper",
-                            LastName = "Lee"
+                            LastName = "Lee",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 17,
                             FirstName = "Leo",
-                            LastName = "Tolstoy"
+                            LastName = "Tolstoy",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 18,
                             FirstName = "Jane",
-                            LastName = "Austen"
+                            LastName = "Austen",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 19,
                             FirstName = "F. Scott",
-                            LastName = "Fitzgerald"
+                            LastName = "Fitzgerald",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 20,
                             FirstName = "Agatha",
-                            LastName = "Christie"
+                            LastName = "Christie",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 21,
                             FirstName = "Dan",
-                            LastName = "Brown"
+                            LastName = "Brown",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 22,
                             FirstName = "Mark",
-                            LastName = "Twain"
+                            LastName = "Twain",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 23,
                             FirstName = "J.D.",
-                            LastName = "Salinger"
+                            LastName = "Salinger",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 24,
                             FirstName = "Ernest",
-                            LastName = "Hemingway"
+                            LastName = "Hemingway",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 25,
                             FirstName = "Aldous",
-                            LastName = "Huxley"
+                            LastName = "Huxley",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 26,
                             FirstName = "Herman",
-                            LastName = "Melville"
+                            LastName = "Melville",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 27,
                             FirstName = "Stephen",
-                            LastName = "King"
+                            LastName = "King",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 28,
                             FirstName = "J.R.R.",
-                            LastName = "Tolkien"
+                            LastName = "Tolkien",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 29,
                             FirstName = "Lewis",
-                            LastName = "Carroll"
+                            LastName = "Carroll",
+                            isDeleted = false
                         },
                         new
                         {
                             AuthorId = 30,
                             FirstName = "Andy",
-                            LastName = "Weir"
+                            LastName = "Weir",
+                            isDeleted = false
                         });
                 });
 

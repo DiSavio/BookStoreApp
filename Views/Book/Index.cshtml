@@ -14,12 +14,12 @@
 			<tr>
 				<td>  <label for="selectedGenreId">Search by Genre:</label>  </td>
 				<td>
-		<div style="width: 200px;">
-			
-			@Html.DropDownList("selectedGenreId", Model.Genres, "All Genres", new { @class = "form-control" })
-		</div>
+					<div style="width: 200px;">
+
+						@Html.DropDownList("selectedGenreId", Model.Genres, "All Genres", new { @class = "form-control" })
+					</div>
 				</td>
-			<td>
+				<td>
 					<button type="submit" class="btn btn-primary">Search</button>
 				</td>
 			</tr>
@@ -71,9 +71,9 @@
 			</li>
 			@for (int i = 2; i <= Model.PageResult.TotalPages; i++)
 			{
-					<li class="page-item @(Model.PageResult.PageNumber == i ? "active" : "")">
-						<a class="page-link" href="@(Url.Action("Index", "Book", new { page = i, pageSize = Model.PageResult.PageSize }))">@i</a>
-					</li>
+				<li class="page-item @(Model.PageResult.PageNumber == i ? "active" : "")">
+					<a class="page-link" href="@(Url.Action("Index", "Book", new { page = i, pageSize = Model.PageResult.PageSize }))">@i</a>
+				</li>
 			}
 			<li class="page-item @((Model.PageResult.PageNumber == Model.PageResult.TotalPages) ? "disabled" : "")">
 				<a class="page-link" href="@(Url.Action("Index", "Book", new { page = Model.PageResult.PageNumber + 1, pageSize = Model.PageResult.PageSize }))">Next</a>

@@ -17,6 +17,7 @@
             <label for="searchString">Search by Name:</label>
             <input type="text" name="searchString" class="form-control" style="width: 200px;" />
             <button type="submit" class="btn btn-primary">Search</button>
+            <a href="@Url.Action("Index", "Author")" class="btn btn-secondary">Show All Authors</a>
         </div>
     </form>
 </div>
@@ -27,14 +28,20 @@
         <tr class="text-white bg-dark">
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Actions</th> <!-- Add a column for actions like Edit -->
         </tr>
     </thead>
     <tbody>
         @foreach (Author author in Model.PageResult.Items)
         {
             <tr>
-                <td>@author.FirstName</td>
+                <!-- Add a link to the Edit action on the author's first name -->
+                <td><a asp-action="Edit" asp-route-id="@author.AuthorId">@author.FirstName</a></td>
                 <td>@author.LastName</td>
+                <td>
+                    <!-- Optionally, add a link for Edit here as well -->
+                    <a asp-action="Edit" asp-route-id="@author.AuthorId" class="btn btn-primary">Edit</a>
+                </td>
             </tr>
         }
     </tbody>
