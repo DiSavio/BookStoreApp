@@ -8,7 +8,6 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BookstoreContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BookStoreContext")));
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

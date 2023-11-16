@@ -48,5 +48,19 @@ namespace BookStoreApp.Controllers
             TempData["message"] = $"{model.Book.Title} has been added in the cart";
             return RedirectToAction("Index", "Book");
         }
+
+		public IActionResult Delete(string isbn)
+		{
+			var book = context.Books.Find(isbn); 
+			if (book == null)
+			{
+				return NotFound();
+			}
+			context.Books.Remove(book);
+			context.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+
 	}
 }
