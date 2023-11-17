@@ -7,6 +7,7 @@ namespace BookStoreApp.Models
     public class Book
     {
         [Key]
+        [Required]
         public string ISBN { get; set; }  // primary key
 
         public int BookId { get; set; }  
