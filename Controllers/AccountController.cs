@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GuitarShopApp.Controllers
+namespace BookStoreApp.Controllers
 {
 
 
