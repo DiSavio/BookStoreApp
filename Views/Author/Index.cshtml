@@ -1,0 +1,66 @@
+﻿@model AuthorViewModel
+    
+@{
+    ViewData["Title"] = "Tuxedo Books - Authors";
+}
+
+<!-- Display a message if exists -->
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="bg-success p-2">@TempData["message"]</h4>
+}
+
+
+<!-- Search Form for Authors -->
+<div>
+    <h2>Authors</h2>
+    <form method="get" asp-action="Index" asp-controller="Author">
+        <div>
+            <label for="searchString">Search by Name:</label>
+            <input type="text" name="searchString" class="form-control" style="width: 200px;" />
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="@Url.Action("Index", "Author")" class="btn btn-secondary">Show All Authors</a>
+        </div>
+    </form>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="text-white bg-dark">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Author author in Model.PageResult.Items)
+        {
+            <tr>
+                <td><a asp-action="Edit" asp-route-id="@author.AuthorId">@author.FirstName</a></td>
+                <td>@author.LastName</td>
+                <td>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <a href="@Url.Action("Delete", "Author", new { id = author.AuthorId })" onclick="return confirm('Are you sure you want to delete this author?');">
+                            <img src="~/Red_X (2).png" alt="Delete" title="Delete Author" style="cursor:pointer; width:20px; height:20px;">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+<!-- Pagination Links -->
+<div class="text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PageResult.TotalPages; i++)
+        {
+            <li class="page-item @(Model.PageResult.PageNumber == i ? "active" : "")">
+                <a class="page-link" href="@(Url.Action("Index", "Author", new { page = i, pageSize = Model.PageResult.PageSize, searchString = Model.SearchString }))">@i</a>
+            </li>
+        }
+    </ul>
+</div>

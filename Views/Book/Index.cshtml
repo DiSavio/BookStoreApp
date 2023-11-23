@@ -32,6 +32,7 @@
 			<th>Title</th>
 			<th>Author(s)</th>
 			<th>Genre</th>
+			<th>ISBN</th>
 			<th>Price</th>
 			<th></th>
 		</tr>
@@ -43,6 +44,7 @@
 				<td>@book.Title</td>
 				<td>@book.authorObject.FirstName @book.authorObject.LastName</td>
 				<td>@book.Genre.Name</td>
+				<td>@book.ISBN</td>
 				<td>$@book.Price</td>
 				<td>
 					<div style="display: flex; align-items: center; gap: 10px;">

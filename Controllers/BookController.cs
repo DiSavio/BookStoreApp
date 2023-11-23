@@ -15,6 +15,7 @@ namespace BookStoreApp.Controllers
         public BookController(BookstoreContext ctx) =>  context = ctx;
         public IActionResult Index(int page = 1, int pageSize = 5, int selectedGenreId = 0)
         {
+
 			int skip = (page - 1) * pageSize;
 			var genres = context.Genres.ToList();
 
