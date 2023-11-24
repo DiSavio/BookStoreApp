@@ -1,10 +1,12 @@
 ﻿using BookStoreApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 namespace BookStoreApp.Controllers
 {
+    [Authorize]
     public class AuthorController : Controller
     {
         private BookstoreContext context { get; set; }
