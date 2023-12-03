@@ -56,6 +56,12 @@
 							<input type="hidden" asp-for="@book.BookId" />
 							<input type="hidden" asp-for="@book.Title" />
 						</form>
+						<form method="get" asp-action="Edit" asp-controller="Book">
+							<button type="submit" class="btn btn-primary">
+								Edit
+							</button>
+							<input type="hidden" name="isbn" value="@book.ISBN" />
+						</form>
 						<a href="@Url.Action("Delete", "Book", new { isbn = book.ISBN })" onclick="return confirm('Are you sure you want to delete this book?');">
 							<img src="~/Red_X (2).png" alt="Delete" title="Delete Book" style="cursor:pointer; width:20px; height:20px;">
 						</a>

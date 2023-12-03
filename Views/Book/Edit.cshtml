@@ -1,0 +1,63 @@
+﻿@model Book
+
+@{
+    string title = ViewBag.Action + " Book";
+    ViewData["Title"] = title;
+}
+
+<div class="container mt-3" style="max-width: 500px;">
+    <h1>Edit Book</h1>
+
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <form asp-controller="Book" asp-action="Update" method="post">
+        <input type="hidden" asp-for="BookId" />
+
+        <div class="form-group">
+            <label for="ISBN">ISBN</label>
+            <input type="text" asp-for="ISBN" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" asp-for="Title" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="text" asp-for="Price" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="authorObject.AuthorId">Author</label>
+            <select asp-for="authorObject.AuthorId" class="form-control">
+                <option value="">Select Author</option>
+                @foreach (var author in ViewBag.Authors)
+                {
+                    <option value="@author.AuthorId">@author.FirstName @author.LastName</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Genre.Name">Genre</label>
+            <select asp-for="Genre.Name" class="form-control">
+                <option value="">Select Genre</option>
+                @foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.Name">@genre.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="Book" asp-action="Index" class="btn btn-danger ml-2">Cancel</a>
+        </div>
+    </form>
+</div>
